@@ -1,0 +1,149 @@
+<!doctype html>
+
+<html>
+
+    <head>
+        <title>NBA</title>
+        <link rel="shortcut icon" type="imagen/x-icon" href="../Imagenes/nba.png">
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="../css/estilos.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="https://www.google.com/jsapi"></script>
+        
+        <script>
+
+        var public_key = 'dZ4EVmE8yGCRGx5XRX1W';
+
+        var jsonData = $.ajax({
+          url: 'http://localhost:5984/nba/_all_docs/?limit=100&include_docs=true',
+          //url: 'http://127.0.0.1:5984/test/_all_docs?include_docs=true&conflicts=true',
+          data: {page: 1},
+          dataType: 'json',
+        }).done(function (results) {
+
+
+       var count=results.total_rows;
+         
+
+          for(var i=1;i<10; i++){
+            
+            var player=results.rows[i].doc.nba.Player;
+            var team=results.rows[i].doc.nba.Team;
+            var date=results.rows[i].doc.nba.Date;
+            var age=results.rows[i].doc.nba.Age;
+            var drafyear=results.rows[i].doc.nba.Draft_Year;
+            var season=results.rows[i].doc.nba.Season;
+
+      
+      document.getElementById("nba").innerHTML += "<tr>"+
+                                                        "<td>"+player+"</td>"+
+                                                        "<td>"+team+"</td>"+
+                                                        "<td>"+date+"</td>"+
+                                                        "<td>"+age+"</td>"+
+                                                        "<td>"+drafyear+"</td>"+
+														"<td>"+season+"</td>"+
+                                                        
+                                                    "</tr>";      
+        }
+      });
+
+    </script>
+    
+    </head>
+    
+    <body>
+        
+        <header>
+            <div class = "logo">
+               <img src="../Imagenes/nba.png" width="50%" height="150" alt="cabecera">
+            </div>
+            
+            
+        </header><br>
+        <div class="container">
+            <div class="row" >
+                <div class="col-sm" >
+                    <form action="../index.html" method="post" id="formregistrar">
+                        <button type="submit" class="btn btn-secondary" name="btn_registrar" id="btn_registrar"><a href=""><img src="../Imagenes/regresar.png" width="75"></a>Regresar</button>
+
+                    </form>
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm"></div>
+                <div class="col-sm"></div>
+                <div class="col-sm"></div>
+               <div class="col-sm">
+
+                    <form action="google_charts_nba.html">
+                        <button type="submit" class="btn btn-secondary boton" name="btn_registrar" id="btn_registrar"><a href=""></a>Gráfico<img src="../Imagenes/grafico.jpg" width="75"></button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+       <br><br> 
+       <div class="container">
+            <table class="table table-striped" > 
+                <thead class="table-dark">
+                  <tr>
+                    <th>Jugador</th> 
+                    <th>Equipo</th>
+                    <th>Fecha</th>
+                    <th>Edad</th>
+                    <th>Año de Participacion</th>
+                    <th>Temporada</th>
+                  </tr>
+                <tbody id="nba">  
+                </tbody>
+              </table>
+        </div>
+       
+       <br><br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <form action="../index.html" method="post" id="formregistrar">
+                        <center><button type="submit" class="btn btn-secondary" name="btn_registrar" id="btn_registrar"><a href=""><img src="../Imagenes/regresar.png" width="75"></a>Regresar</button></center>
+                    </form>
+                </div>
+                 <div class="col-sm-2"></div>
+                <div class="col-sm"></div>
+                <div class="col-sm"></div>
+                <div class="col-sm"></div>
+               <div class="col-sm">
+
+                    <form action="google_charts_nba.html">
+                        <button type="submit" class="btn btn-secondary boton" name="btn_registrar" id="btn_registrar"><a href=""></a>Gráfico<img src="../Imagenes/grafico.jpg" width="75"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br><br>
+       <center><img id="agencia" src="../Imagenes/couchdb.png" alt="agencia" height="100" width="300"></center><br><br>
+         <footer>
+            <p id="pie">
+               <img src="../Imagenes/epn.png" alt="pie_pag" width="75" height="75"><br>
+               Av. Ladron de Guevara<br> 
+                            Quito - Ecuador <br>
+                        Teléfono: 593-2 373-1110
+            </p>
+        </footer>
+        
+        <script src="javascript/validaciones.js">
+            
+        </script>
+
+        <hr/>
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        
+    </body>
+    
+    
+</html>

@@ -1,0 +1,111 @@
+.cuerpo{
+    background: #E1DDDD;
+}
+button{
+	cursor:pointer;
+
+}
+
+.tituloh1{
+    font-family: Algerian;
+    text-decoration: underline;
+    margin: auto 8%;
+
+}
+
+.logo{
+	text-align:center;
+}
+.boton{
+    margin-right: -10%;
+    width: 150px;
+    font-size: 55px;
+}
+h1{
+    text-align: center;
+}
+.grafico{
+    width: 1000px;
+    text-align: center;
+    margin-left: 15%;
+    margin-top: -5%;
+    background: #D6D2D2;
+}
+.fila1{
+    width: 400px;
+    margin:auto;
+    background: white;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.fila2{
+    width: 400px;
+    margin: auto;
+    background: white;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+#pie{
+    background: rgb(121, 128, 129);
+    text-align: center;
+}
+
+#agencia{
+ text-align: center;
+
+}
+
+
+#btn_matrimonio, 
+#btn_registrar, #btn_salir{
+    font-size: 20px;
+    width: 100%; 
+    margin: 10px;
+    border-radius: 10px;
+	color:white;
+}
+#btnenviar{
+     font-size: 20px;
+    width: 50%; 
+    margin: 20px;
+    border-radius: 10px;
+    color:white;
+
+}
+.titulo{
+    font-family: Algerian;
+    text-decoration: underline;
+}
+.col-sm{
+    margin-top: -30px;
+    background-color: transparent;
+
+}
+
+#div1, #div2{
+    margin: 30px;
+    width: 50%;
+}
+
+#divc{
+    max-width: 30px;
+    background: white;
+    border-color: red;
+ 
+}
+
+#divcontainer{
+    padding: 0px;
+     
+}
+
+#btn_registro_sig{
+    padding: 25px;
+    font-size: 20px;
+}
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <meta charset="utf-8">
+    <link rel="shortcut" type="imagen/x-icon" href="../Imagenes/nfl.png">
+    <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <title>Gráfico de jugadores de la nba</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  
+	 <script src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+  
+ 
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(googlec);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+	   function googlec(){
+	       var public_key = 'dZ4EVmE8yGCRGx5XRX1W';
+    
+          var jsonData = $.ajax({
+          url: 'http://localhost:5984/nfl/_all_docs/?limit=100&include_docs=true',
+          //url: 'http://127.0.0.1:5984/test/_all_docs?include_docs=true&conflicts=true',
+          data: {page: 1},
+          dataType: 'json',
+        }).done(function (results) {
+
+
+		    var count=results.total_rows;
+        var data = new google.visualization.DataTable();
+        //data2.addColumn('string', 'collage');
+        data.addColumn('string', 'name');
+		    data.addColumn('number', 'year');
+		
+
+          for(var i=0;i<20; i++){
+		        
+            var name=results.rows[i].doc.nfl.name;
+		        var grade=results.rows[i].doc.nfl.nflgrade;
+            data.addRow([name, Number(grade)]);
+          //   data.addRows([
+          // [name,nflgrade],
+          
+       
+          var options = {'title':'',
+          'width':1200,
+          'height':800,};  
+        }
+		var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      });
+		}
+		
+   
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div class="logo">
+      <img src="../Imagenes/nfl.png" width="150" height="150">
+    </div>
+
+    <div class="tituloh1">
+      <h1>Porcentaje de ranking de jugadores de NFL</h1>
+    </div>
+    <form action="NFL.html">
+      <button class="btn btn-secondary boton"><a href=""><img src="../Imagenes/regresar.png" width="50"></a>Regresar</button>
+    </form>
+    <div id="chart_div" class="grafico">
+      
+    </div>
+    <form action="NFL.html">
+      <button class="btn btn-secondary boton"><a href=""><img src="../Imagenes/regresar.png" width="50"></a>Regresar</button>
+    </form>
+
+  </body>
+</html>
